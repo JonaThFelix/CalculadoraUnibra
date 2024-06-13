@@ -1,0 +1,146 @@
+<!--
+
+A História é engraçada, mas é rir pra não chorar, me chamo Jonathan aluno e enquanto estou trabalhando
+nessa calculadora estou finalizando o 5 período de ADS na Unibra.
+A ideia da calculadora se deu quando um professor do 2 periodo reprovou toda a sala por motivos pessoais
+e isso gerou um caos, pois ninguém sabia quanto faltava para passar na média e pessoas como eu nunca tinhamos
+ido sequer a uma final na vida.
+Conseguimos e Passamos xD, o projeto inicial foi feito em Python e você pode dar um fork no replit através do link
+https://replit.com/@AkhennatoN/CalculadoraUnibra?v=1
+
+A lógica pode ser utilizada para qualquer curso da instituição, pois a lógica é a mesma.
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Média - Unibra</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+        input[type="number"], input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus, input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .footer a {
+            color: #0073b1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #005582;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculando Média - Unibra</h1>
+        <h3>Fui pra Final, e agora quantos pontos falta pra passar?</h3>
+        <div>
+            <label for="av1">Digite sua AV1:</label>
+            <input type="number" id="av1" step="0.01" placeholder="Nota AV1">
+            
+            <label for="av2">Digite sua AV2:</label>
+            <input type="number" id="av2" step="0.01" placeholder="Nota AV2">
+            
+            <label for="av3">Digite sua AV3:</label>
+            <input type="number" id="av3" step="0.01" placeholder="Nota AV3">
+            
+            <button onclick="calcularMedia()">Calcular Média</button>
+        </div>
+        <div id="resultado" class="result"></div>
+        <div class="footer">
+            <p>Desenvolvido na base do ódio por John depois que Jhey colocou todo mundo na Final</br> <a href="https://www.linkedin.com/in/jonathan-felix-a7439119b/" target="_blank">LinkedIn</a> | <a href="https://github.com/JonaThFelix" target="_blank">GitHub</a> | <a href="https://jonathfelix.github.io/Portifolio/" target="_blank">Portifólio</a></p>
+        </div>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            let av1 = parseFloat(document.getElementById('av1').value);
+            let av2 = parseFloat(document.getElementById('av2').value);
+            let av3 = parseFloat(document.getElementById('av3').value);
+            
+            let media = (av1 + av2 + av3) / 3;
+            let resultadoDiv = document.getElementById('resultado');
+            
+            if (!isNaN(media)) {
+                if (media >= 7) {
+                    resultadoDiv.innerHTML = `<p>Você já passou com média ${media.toFixed(2)}.</p><p>Parabéns! ╰(*°▽°*)╯</p>`;
+                } else {
+                    let mediafn = (media - 10) * -1;
+                    resultadoDiv.innerHTML = `<p>Você ficou abaixo da média com ${media.toFixed(2)}, que vergonha (￣﹃￣)</p><p>Você tem que tirar no mínimo ${mediafn.toFixed(2)} para passar na matéria.</p>`;
+                }
+            } else {
+                resultadoDiv.innerHTML = `<p>Por favor, insira todas as notas corretamente.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
